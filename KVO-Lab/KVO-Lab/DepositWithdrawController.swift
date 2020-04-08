@@ -8,12 +8,19 @@
 
 import UIKit
 
+enum Status {
+    case deposit
+    case withdraw
+}
+
 class DepositWithdrawController: UIViewController {
     
     @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var balanceStepper: UIStepper!
+    @IBOutlet weak var valueText: UITextField!
     
     private var balanceObserver: NSKeyValueObservation?
+    
+    private var status: Status = .deposit
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +29,14 @@ class DepositWithdrawController: UIViewController {
         updateUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        configureBalance()
+    }
+    
     private func updateUI() {
         balanceLabel.text = User.shared.balance.description
+        valueText.delegate = self
     }
     
     private func configureBalance() {
@@ -35,8 +48,32 @@ class DepositWithdrawController: UIViewController {
     }
     
     
-    @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        User.shared.balance = Int(sender.value)
-        print(User.shared.balance)
+    @IBAction func depositButtonPressed(_ sender: UIButton) {
+        status = .deposit
+    }
+    
+    
+    @IBAction func withdrawButtonPressed(_ sender: UIButton) {
+        status = .withdraw
+    }
+}
+
+extension DepositWithdrawController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        if status == .deposit {
+            if let value = textField.text {
+                User.shared.balance += Int(value) ?? 0
+            }
+        } else {
+            if let value = textField.text {
+                User.shared.balance -= Int(value) ?? 0
+            }
+        }
+        
+        return true
     }
 }

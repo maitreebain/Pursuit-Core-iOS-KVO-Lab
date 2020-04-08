@@ -15,42 +15,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$    " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Siy-TQ-Yah">
-                                <rect key="frame" x="20" y="193" width="180" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$    " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Siy-TQ-Yah">
+                                <rect key="frame" x="189" y="433.5" width="36" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.62651407169999995" green="0.74407122459999997" blue="0.62768834220000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Savings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onD-HM-efn">
-                                <rect key="frame" x="20" y="104" width="314" height="29"/>
+                                <rect key="frame" x="20" y="104" width="374" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="cbi-3X-bug">
-                                <rect key="frame" x="300" y="193" width="94" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vV1-eQ-kdg">
+                                <rect key="frame" x="20" y="213" width="53" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="oQi-Qb-Kyg"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Deposit"/>
                                 <connections>
-                                    <action selector="stepperValueChanged:" destination="5Sg-z6-Fgq" eventType="valueChanged" id="ALW-At-RXJ"/>
+                                    <action selector="depositButtonPressed:" destination="5Sg-z6-Fgq" eventType="touchUpInside" id="Ocg-9Z-8NE"/>
                                 </connections>
-                            </stepper>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xo3-bi-Oxh">
+                                <rect key="frame" x="328" y="213" width="66" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hmx-tk-iVA"/>
+                                </constraints>
+                                <color key="tintColor" red="0.89308375630000003" green="0.38342688920000001" blue="0.36983842729999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Withdraw"/>
+                                <connections>
+                                    <action selector="withdrawButtonPressed:" destination="5Sg-z6-Fgq" eventType="touchUpInside" id="8wQ-co-vg2"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter deposit/withdraw value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0FS-3V-c7l">
+                                <rect key="frame" x="60" y="317" width="294" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="vV1-eQ-kdg" firstAttribute="centerY" secondItem="xo3-bi-Oxh" secondAttribute="centerY" id="3H6-zL-R9a"/>
+                            <constraint firstItem="oCP-wl-QCH" firstAttribute="trailing" secondItem="0FS-3V-c7l" secondAttribute="trailing" constant="60" id="5YQ-Ts-EIn"/>
                             <constraint firstItem="onD-HM-efn" firstAttribute="leading" secondItem="oCP-wl-QCH" secondAttribute="leading" constant="20" id="7fo-zn-Vdj"/>
-                            <constraint firstItem="cbi-3X-bug" firstAttribute="leading" secondItem="Siy-TQ-Yah" secondAttribute="trailing" constant="100" id="S7v-3N-Wz7"/>
-                            <constraint firstItem="Siy-TQ-Yah" firstAttribute="leading" secondItem="oCP-wl-QCH" secondAttribute="leading" constant="20" id="V3F-gR-lmW"/>
-                            <constraint firstItem="cbi-3X-bug" firstAttribute="top" secondItem="onD-HM-efn" secondAttribute="bottom" constant="60" id="aoq-BI-T6Y"/>
-                            <constraint firstItem="oCP-wl-QCH" firstAttribute="trailing" secondItem="cbi-3X-bug" secondAttribute="trailing" constant="20" id="cuI-zq-7bf"/>
-                            <constraint firstItem="Siy-TQ-Yah" firstAttribute="top" secondItem="onD-HM-efn" secondAttribute="bottom" constant="60" id="gnK-95-0eD"/>
-                            <constraint firstItem="oCP-wl-QCH" firstAttribute="trailing" secondItem="onD-HM-efn" secondAttribute="trailing" constant="80" id="p2v-ac-L8F"/>
+                            <constraint firstItem="0FS-3V-c7l" firstAttribute="leading" secondItem="oCP-wl-QCH" secondAttribute="leading" constant="60" id="9x0-bk-7RP"/>
+                            <constraint firstItem="vV1-eQ-kdg" firstAttribute="leading" secondItem="oCP-wl-QCH" secondAttribute="leading" constant="20" id="FqO-OP-AcM"/>
+                            <constraint firstItem="vV1-eQ-kdg" firstAttribute="top" secondItem="onD-HM-efn" secondAttribute="bottom" constant="80" id="G1O-Cd-NfX"/>
+                            <constraint firstItem="Siy-TQ-Yah" firstAttribute="centerX" secondItem="hgc-cn-7AV" secondAttribute="centerX" id="Iup-Ul-iJo"/>
+                            <constraint firstItem="xo3-bi-Oxh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vV1-eQ-kdg" secondAttribute="trailing" constant="8" symbolic="YES" id="dik-q7-mxO"/>
+                            <constraint firstItem="Siy-TQ-Yah" firstAttribute="centerY" secondItem="hgc-cn-7AV" secondAttribute="centerY" id="mW9-Ty-KBx"/>
+                            <constraint firstItem="oCP-wl-QCH" firstAttribute="trailing" secondItem="onD-HM-efn" secondAttribute="trailing" constant="20" id="p2v-ac-L8F"/>
+                            <constraint firstItem="oCP-wl-QCH" firstAttribute="trailing" secondItem="xo3-bi-Oxh" secondAttribute="trailing" constant="20" id="thF-hv-wN9"/>
+                            <constraint firstItem="xo3-bi-Oxh" firstAttribute="top" secondItem="onD-HM-efn" secondAttribute="bottom" constant="80" id="tom-Gz-4Go"/>
                             <constraint firstItem="onD-HM-efn" firstAttribute="top" secondItem="oCP-wl-QCH" secondAttribute="top" constant="60" id="yPn-DU-5kU"/>
+                            <constraint firstItem="0FS-3V-c7l" firstAttribute="top" secondItem="vV1-eQ-kdg" secondAttribute="bottom" constant="60" id="ye1-C3-oPc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oCP-wl-QCH"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Deposit/Withdraw" id="zVH-ZM-spP"/>
                     <connections>
                         <outlet property="balanceLabel" destination="Siy-TQ-Yah" id="nj1-LA-i70"/>
-                        <outlet property="balanceStepper" destination="cbi-3X-bug" id="ryb-KJ-Fsl"/>
+                        <outlet property="valueText" destination="0FS-3V-c7l" id="XE0-d5-I4C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWV-rI-8ac" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
