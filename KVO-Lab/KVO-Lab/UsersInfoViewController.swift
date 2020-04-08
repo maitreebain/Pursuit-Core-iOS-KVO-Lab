@@ -14,9 +14,11 @@ class UsersInfoViewController: UIViewController {
     
     private var accountObserver: NSKeyValueObservation?
     
-    var account = [Account.shared.users]{
+    var account = Account.shared.users{
         didSet{
-            balanceTableView.reloadData()
+            DispatchQueue.main.async {
+                self.balanceTableView.reloadData()
+            }
         }
     }
     
@@ -24,6 +26,15 @@ class UsersInfoViewController: UIViewController {
         super.viewDidLoad()
 
         balanceTableView.dataSource = self
+        configureAccountObserver()
+    }
+    
+    private func configureAccountObserver() {
+        accountObserver = Account.shared.observe(\.users, options: [.old, .new], changeHandler: { (account, change) in
+
+            guard let oldUsers = change.oldValue,let newUsers = change.newValue else { return }
+            self.account = newUsers
+        })
     }
 
 }
@@ -37,14 +48,8 @@ extension UsersInfoViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "balanceCell", for: indexPath)
     
         let value = account[indexPath.row]
-        cell.textLabel?.text = "\(value[indexPath.row].name)"
-        cell.detailTextLabel?.text = "\(value[indexPath.row].name)"
-        
-        accountObserver = Account.shared.observe(\.users, options: [.old, .new], changeHandler: { (account, change) in
-            
-            cell.textLabel?.text = "\(change.newValue)"
-            cell.detailTextLabel?.text = "\(value[indexPath.row].name)"
-        })
+        cell.textLabel?.text = "\(value.name)"
+        cell.detailTextLabel?.text = "\(value.balance)"
         
         return cell
     }

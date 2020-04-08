@@ -12,9 +12,4 @@ import Foundation
     static let shared = User()
     @objc dynamic var name = ""
     @objc dynamic var balance = 0
-    
-    override private init(){
-        name = ""
-        balance = 0
-    }
 }

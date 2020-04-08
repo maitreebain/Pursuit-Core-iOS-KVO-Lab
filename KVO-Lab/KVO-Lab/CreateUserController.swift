@@ -37,13 +37,13 @@ class CreateUserController: UIViewController {
 extension CreateUserController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let newUser = User()
         
         if let name = usernameText.text, let balance = balanceText.text {
-            User.shared.name = name
-            User.shared.balance = Int(balance) ?? 0
-            Account.shared.users.append(User.shared)
+            newUser.name = name
+            newUser.balance = Int(balance) ?? 0
+            Account.shared.users.append(newUser)
             
-            print("name: \(User.shared.name) + \(User.shared.balance)")
         }
         textField.resignFirstResponder()
         
