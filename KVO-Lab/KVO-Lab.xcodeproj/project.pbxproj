@@ -16,6 +16,7 @@
 		80771BAF243D5725003D3148 /* KVO_LabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80771BAE243D5725003D3148 /* KVO_LabTests.swift */; };
 		80771BBA243D5A24003D3148 /* DepositWithdrawController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80771BB9243D5A24003D3148 /* DepositWithdrawController.swift */; };
 		80771BBC243D5A57003D3148 /* UsersInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80771BBB243D5A57003D3148 /* UsersInfoViewController.swift */; };
+		80771BBE243D5DCF003D3148 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80771BBD243D5DCF003D3148 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		80771BB0243D5725003D3148 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80771BB9243D5A24003D3148 /* DepositWithdrawController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositWithdrawController.swift; sourceTree = "<group>"; };
 		80771BBB243D5A57003D3148 /* UsersInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersInfoViewController.swift; sourceTree = "<group>"; };
+		80771BBD243D5DCF003D3148 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				80771B97243D5723003D3148 /* AppDelegate.swift */,
 				80771B99243D5723003D3148 /* SceneDelegate.swift */,
 				80771B9B243D5723003D3148 /* CreateUserController.swift */,
+				80771BBD243D5DCF003D3148 /* User.swift */,
 				80771BB9243D5A24003D3148 /* DepositWithdrawController.swift */,
 				80771BBB243D5A57003D3148 /* UsersInfoViewController.swift */,
 				80771B9D243D5723003D3148 /* Main.storyboard */,
@@ -210,6 +213,7 @@
 				80771B9C243D5723003D3148 /* CreateUserController.swift in Sources */,
 				80771BBC243D5A57003D3148 /* UsersInfoViewController.swift in Sources */,
 				80771B98243D5723003D3148 /* AppDelegate.swift in Sources */,
+				80771BBE243D5DCF003D3148 /* User.swift in Sources */,
 				80771B9A243D5723003D3148 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

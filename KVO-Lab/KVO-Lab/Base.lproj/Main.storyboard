@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wnq-j9-SAX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
@@ -10,7 +10,7 @@
         <!--Deposit/Withdraw-->
         <scene sceneID="HLj-Mk-1ip">
             <objects>
-                <viewController id="5Sg-z6-Fgq" sceneMemberID="viewController">
+                <viewController id="5Sg-z6-Fgq" customClass="DepositWithdrawController" customModule="KVO_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hgc-cn-7AV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,8 +27,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="cbi-3X-bug">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="cbi-3X-bug">
                                 <rect key="frame" x="300" y="193" width="94" height="32"/>
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="5Sg-z6-Fgq" eventType="valueChanged" id="ALW-At-RXJ"/>
+                                </connections>
                             </stepper>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -45,6 +48,10 @@
                         <viewLayoutGuide key="safeArea" id="oCP-wl-QCH"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Deposit/Withdraw" id="zVH-ZM-spP"/>
+                    <connections>
+                        <outlet property="balanceLabel" destination="Siy-TQ-Yah" id="nj1-LA-i70"/>
+                        <outlet property="balanceStepper" destination="cbi-3X-bug" id="ryb-KJ-Fsl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWV-rI-8ac" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,6 +115,10 @@
                         <viewLayoutGuide key="safeArea" id="5iz-Pi-LFu"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Create User" image="person.fill" catalog="system" id="z7K-e2-72a"/>
+                    <connections>
+                        <outlet property="balanceText" destination="E14-Vg-SO9" id="4E4-of-CbF"/>
+                        <outlet property="usernameText" destination="YdO-lS-SbL" id="7bX-uk-ilq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wsb-ku-9DT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
