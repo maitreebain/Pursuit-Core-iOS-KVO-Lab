@@ -41,8 +41,7 @@ extension CreateUserController: UITextFieldDelegate {
         if let name = usernameText.text, let balance = balanceText.text {
             User.shared.name = name
             User.shared.balance = Int(balance) ?? 0
-            Account.shared.name.append(name)
-            Account.shared.balance.append(Int(balance) ?? 0)
+            Account.shared.users.append(User.shared)
             
             print("name: \(User.shared.name) + \(User.shared.balance)")
         }

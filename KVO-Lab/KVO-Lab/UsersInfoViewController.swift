@@ -14,7 +14,11 @@ class UsersInfoViewController: UIViewController {
     
     private var accountObserver: NSKeyValueObservation?
     
-    var account = [Account.shared]
+    var account = [Account.shared.users]{
+        didSet{
+            balanceTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +37,13 @@ extension UsersInfoViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "balanceCell", for: indexPath)
     
         let value = account[indexPath.row]
-        cell.textLabel?.text = "\(value.name.last ?? "no name")"
-        cell.detailTextLabel?.text = "\(value.balance.last ?? 0)"
+        cell.textLabel?.text = "\(value[indexPath.row].name)"
+        cell.detailTextLabel?.text = "\(value[indexPath.row].name)"
         
-        accountObserver = Account.shared.observe(\.balance, options: [.old, .new], changeHandler: { (account, change) in
-        
-            cell.detailTextLabel?.text = "\(change.newValue?.first ?? 0)"
+        accountObserver = Account.shared.observe(\.users, options: [.old, .new], changeHandler: { (account, change) in
+            
+            cell.textLabel?.text = "\(change.newValue)"
+            cell.detailTextLabel?.text = "\(value[indexPath.row].name)"
         })
         
         return cell

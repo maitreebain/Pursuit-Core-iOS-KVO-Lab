@@ -10,11 +10,6 @@ import Foundation
 
 @objc class Account: NSObject {
     static let shared = Account()
-    @objc dynamic var name = [String]()
-    @objc dynamic var balance = [Int]()
+    @objc dynamic var users = [User]()
     
-    override private init(){
-        name = [""]
-        balance = [0]
-    }
 }
