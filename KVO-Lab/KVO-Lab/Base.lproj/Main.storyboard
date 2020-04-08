@@ -77,6 +77,7 @@
                     <tabBarItem key="tabBarItem" title="Deposit/Withdraw" id="zVH-ZM-spP"/>
                     <connections>
                         <outlet property="balanceLabel" destination="Siy-TQ-Yah" id="nj1-LA-i70"/>
+                        <outlet property="savingsLabel" destination="onD-HM-efn" id="wjf-Lh-YKR"/>
                         <outlet property="valueText" destination="0FS-3V-c7l" id="XE0-d5-I4C"/>
                     </connections>
                 </viewController>
@@ -154,7 +155,7 @@
         <!--Item-->
         <scene sceneID="yrg-sB-WMb">
             <objects>
-                <viewController id="MIg-PY-XUH" sceneMemberID="viewController">
+                <viewController id="MIg-PY-XUH" customClass="UsersInfoViewController" customModule="KVO_Lab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8EV-kY-kPV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,7 +164,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="VD9-fc-gt0" detailTextLabel="i7h-xz-3GQ" rowHeight="95" style="IBUITableViewCellStyleValue1" id="TOx-bY-tbI">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="balanceCell" textLabel="VD9-fc-gt0" detailTextLabel="i7h-xz-3GQ" rowHeight="95" style="IBUITableViewCellStyleValue1" id="TOx-bY-tbI">
                                         <rect key="frame" x="0.0" y="28" width="414" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TOx-bY-tbI" id="3sr-3Y-LfM">
@@ -200,6 +201,9 @@
                         <viewLayoutGuide key="safeArea" id="3bj-yH-Z2h"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="dHQ-mw-w6a"/>
+                    <connections>
+                        <outlet property="balanceTableView" destination="ltq-Dx-kXY" id="Bhx-kb-zAc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Be-qa-rtc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

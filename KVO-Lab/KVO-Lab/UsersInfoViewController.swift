@@ -10,21 +10,39 @@ import UIKit
 
 class UsersInfoViewController: UIViewController {
 
+    @IBOutlet weak var balanceTableView: UITableView!
+    
+    private var accountObserver: NSKeyValueObservation?
+    
+    var account = [Account.shared]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        balanceTableView.dataSource = self
+    }
+
+}
+
+extension UsersInfoViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return account.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "balanceCell", for: indexPath)
+    
+        let value = account[indexPath.row]
+        cell.textLabel?.text = "\(value.name.last ?? "no name")"
+        cell.detailTextLabel?.text = "\(value.balance.last ?? 0)"
+        
+        accountObserver = Account.shared.observe(\.balance, options: [.old, .new], changeHandler: { (account, change) in
+        
+            cell.detailTextLabel?.text = "\(change.newValue?.first ?? 0)"
+        })
+        
+        return cell
     }
-    */
-
+    
+    
 }

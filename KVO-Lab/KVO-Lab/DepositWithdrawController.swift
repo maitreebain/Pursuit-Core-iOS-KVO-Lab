@@ -15,6 +15,7 @@ enum Status {
 
 class DepositWithdrawController: UIViewController {
     
+    @IBOutlet weak var savingsLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var valueText: UITextField!
     
@@ -27,11 +28,6 @@ class DepositWithdrawController: UIViewController {
         
         configureBalance()
         updateUI()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        configureBalance()
     }
     
     private func updateUI() {
@@ -50,11 +46,15 @@ class DepositWithdrawController: UIViewController {
     
     @IBAction func depositButtonPressed(_ sender: UIButton) {
         status = .deposit
+        savingsLabel.text = "Depositing"
+        savingsLabel.textColor = .green
     }
     
     
     @IBAction func withdrawButtonPressed(_ sender: UIButton) {
         status = .withdraw
+        savingsLabel.text = "Withdrawing"
+        savingsLabel.textColor = .red
     }
 }
 
@@ -67,10 +67,12 @@ extension DepositWithdrawController: UITextFieldDelegate {
         if status == .deposit {
             if let value = textField.text {
                 User.shared.balance += Int(value) ?? 0
+                Account.shared.balance.append(User.shared.balance)
             }
         } else {
             if let value = textField.text {
                 User.shared.balance -= Int(value) ?? 0
+                Account.shared.balance.append(User.shared.balance)
             }
         }
         
