@@ -67,10 +67,12 @@ extension DepositWithdrawController: UITextFieldDelegate {
         if status == .deposit {
             if let value = textField.text {
                 User.shared.balance += Int(value) ?? 0
+                configureBalance()
             }
         } else {
             if let value = textField.text {
                 User.shared.balance -= Int(value) ?? 0
+                configureBalance()
             }
         }
         

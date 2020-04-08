@@ -40,10 +40,11 @@ extension CreateUserController: UITextFieldDelegate {
         let newUser = User()
         
         if let name = usernameText.text, let balance = balanceText.text {
+            User.shared.balance = Int(balance) ?? 0
+            User.shared.name = name
             newUser.name = name
             newUser.balance = Int(balance) ?? 0
             Account.shared.users.append(newUser)
-            
         }
         textField.resignFirstResponder()
         

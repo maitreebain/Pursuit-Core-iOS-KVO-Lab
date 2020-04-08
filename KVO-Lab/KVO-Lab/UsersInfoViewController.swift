@@ -13,6 +13,7 @@ class UsersInfoViewController: UIViewController {
     @IBOutlet weak var balanceTableView: UITableView!
     
     private var accountObserver: NSKeyValueObservation?
+    private var balanceObserver: NSKeyValueObservation?
     
     var account = Account.shared.users{
         didSet{
@@ -50,6 +51,14 @@ extension UsersInfoViewController: UITableViewDataSource {
         let value = account[indexPath.row]
         cell.textLabel?.text = "\(value.name)"
         cell.detailTextLabel?.text = "\(value.balance)"
+        
+        if value.name == User.shared.name {
+            balanceObserver = User.shared.observe(\.balance, options: [.old, .new], changeHandler: {(user, change) in
+                
+                guard let newBalance = change.newValue else { return }
+                cell.detailTextLabel?.text = "\(newBalance)"
+            })
+        }
         
         return cell
     }
