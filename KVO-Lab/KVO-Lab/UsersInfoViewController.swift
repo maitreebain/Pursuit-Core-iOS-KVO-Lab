@@ -27,13 +27,14 @@ class UsersInfoViewController: UIViewController {
         super.viewDidLoad()
 
         balanceTableView.dataSource = self
+        account = Account.shared.users
         configureAccountObserver()
     }
     
     private func configureAccountObserver() {
         accountObserver = Account.shared.observe(\.users, options: [.old, .new], changeHandler: { (account, change) in
 
-            guard let oldUsers = change.oldValue,let newUsers = change.newValue else { return }
+            guard let newUsers = change.newValue else { return }
             self.account = newUsers
         })
     }
